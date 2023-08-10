@@ -1,0 +1,52 @@
+<div class="page-wrapper">
+
+  <!-- MENU SIDEBAR-->
+  <aside class="menu-sidebar d-none d-lg-block">
+    <div class="logo">
+      <a href="#">
+        <img src="https://i.imgur.com/PMe8U8H.png" alt="luv2shop" class="img-responsive">
+      </a>
+    </div>
+
+    <app-product-category-menu></app-product-category-menu>
+
+  </aside>
+  <!-- END MENU SIDEBAR-->
+
+  <!-- PAGE CONTAINER-->
+  <div class="page-container">
+    <!-- HEADER DESKTOP-->
+    <header class="header-desktop">
+      <div class="section-content section-content-p30">
+        <div class="container-fluid">
+          <div class="header-wrap">
+
+            <app-product-search></app-product-search>
+
+            <app-cart-status></app-cart-status>
+
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- END HEADER DESKTOP-->
+
+    <!-- MAIN CONTENT-->
+    <router-outlet></router-outlet>
+    <!-- END MAIN CONTENT-->
+
+  </div>
+
+</div>
+
+<footer>
+  <ul style="margin: 0">
+    <li>
+      <span class="text-muted">All Rights Reserved © 2020
+        <a class="text-white" href="https://github.com/gaetanBloch">Gaëtan Bloch</a>
+      </span>
+    </li>
+    <li><a href="mailto:gaetan.bloch@gmail.com">Contact Us</a></li>
+    <li><a href="#">Help</a></li>
+  </ul>
+</footer>

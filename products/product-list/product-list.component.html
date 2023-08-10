@@ -1,0 +1,72 @@
+<div class="main-content">
+  <div class="section-content section-content-p30">
+
+    <div *ngIf="!searchMode">
+      <h4>Category: {{ categoryName }}</h4>
+    </div>
+    <div *ngIf="searchMode">
+      <h4>Search for: {{ searchKeyword }}</h4>
+    </div>
+    <hr>
+
+    <div class="container-fluid">
+      <div class="row">
+
+        <!-- Loop over the collection of products -->
+        <div class="col-md-3" *ngFor="let product of products">
+
+          <div class="product-box">
+            <a routerLink="/products/{{ product.id }}">
+              <img src="{{ product.imageUrl }}" class="img-fluid">
+            </a>
+            <a routerLink="/products/{{ product.id }}">
+              <h1>{{ product.name }}</h1>
+            </a>
+            <div class="price">{{ product.unitPrice | currency }}</div>
+            <button class="mt-2 btn btn-primary" (click)="onAddToCart(product)">
+              <i class="fa fa-shopping-cart"></i>Add to cart
+            </button>
+          </div>
+
+        </div>
+
+        <!-- When products are empty then display a message -->
+        <div class="alert alert-warning col-md-12" *ngIf="products?.length === 0" role="alert">
+          No products found.
+        </div>
+
+      </div>
+
+      <!-- Pagination start -->
+      <div class="footer-pagination" *ngIf="products?.length > 0">
+        <div class="row justify-content-center">
+          <div class="clo-md-9">
+
+            <ngb-pagination [(page)]="pageNumber"
+                            [pageSize]="pageSize"
+                            [collectionSize]="totalElements"
+                            [maxSize]="5"
+                            [boundaryLinks]="true"
+                            (pageChange)="listProducts()">
+
+            </ngb-pagination>
+
+          </div>
+
+          <div class="col-md-3 mt-2">
+            <span class="mr-2">Page Size</span>
+            <select (change)="onUpdatePageSize($event)">
+              <option selected>5</option>
+              <option>10</option>
+              <option>20</option>
+              <option>50</option>
+            </select>
+          </div>
+
+        </div>
+        <!-- Pagination end -->
+
+      </div>
+    </div>
+  </div>
+</div>
